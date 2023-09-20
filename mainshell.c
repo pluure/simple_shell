@@ -11,10 +11,9 @@ int main(void)
 
 	while (1)
 	{
-		printf("Myshell> ");
+		printf("Simple_shell ");
 		if (fgets(input, sizeof(input), stdin) == NULL)
 		{
-			printf("Exiting\n");
 			break;
 		}
 		input[strlen(input) - 1] = '\0';

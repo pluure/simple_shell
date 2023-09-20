@@ -11,7 +11,7 @@ int main(void)
 
 	while (1)
 	{
-		printf("Simple_shell ");
+		printf("Simple_shell# ");
 		if (fgets(input, sizeof(input), stdin) == NULL)
 		{
 			break;
@@ -21,17 +21,6 @@ int main(void)
 		if (strlen(input) == 0)
 		{
 			continue;
-		}
-		/* tokenize input into command args */
-		char *cmd = strtok(input, "");
-		char *arguments[MAX_INPUT_SIZE];
-		int argument_count = 0;
-
-		while (cmd != NULL)
-		{
-			arguments[argument_count] = cmd;
-			argument_count++;
-			cmd = strtok(NULL, " ");
 		}
 		cmd_output = popen(input, "r");
 		if (cmd_output == NULL)

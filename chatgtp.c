@@ -1,4 +1,9 @@
-#include "shell.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_INPUT_SIZE 1024
+
 /**
  * main - main shell entry
  * Return: nothing
@@ -22,23 +27,14 @@ int main(void)
 		{
 			continue;
 		}
-		/* tokenize input into command args */
-		char *cmd = strtok(input, "");
-		char *arguments[MAX_INPUT_SIZE];
-		int argument_count = 0;
 
-		while (cmd != NULL)
-		{
-			arguments[argument_count] = cmd;
-			argument_count++;
-			cmd = strtok(NULL, " ");
-		}
 		cmd_output = popen(input, "r");
 		if (cmd_output == NULL)
 		{
 			perror(" ");
 			continue;
 		}
+
 		while (fgets(cmd_output_line, sizeof(cmd_output_line), cmd_output) != NULL)
 		{
 			printf("%s", cmd_output_line);
@@ -48,3 +44,4 @@ int main(void)
 
 	return (0);
 }
+
